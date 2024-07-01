@@ -9,9 +9,7 @@ try {
     ...args,
   });
 
-  if (toolArgs['--start']) {
-    console.log(chalk.black.bgGreen(' Starting... '));
-  }
+  console.log(chalk.black.bgGreen(' Starting... '));
 } catch (e) {
   console.error(e?.message);
 
