@@ -1,8 +1,19 @@
+export const ARGS_NAMES = {
+  NAME: '--name',
+  INTERACTIVE: '--interactive',
+  EXTENSION: '--ext',
+};
+
+const { NAME, INTERACTIVE, EXTENSION } = ARGS_NAMES;
+
 const args = {
-  '--name': String,
+  [NAME]: String,
+  [INTERACTIVE]: Boolean,
+  [EXTENSION]: String,
 
   // Aliases
-  '-n': '--name',
+  '-n': NAME,
+  '-i': INTERACTIVE,
 };
 
 export default args;

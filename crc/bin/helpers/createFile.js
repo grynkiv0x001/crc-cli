@@ -1,11 +1,20 @@
-import fs from 'fs-extra';
+import fs from 'fs/promises';
 
-const createFile = (file, code) => {
-  if (!fs.existsSync(file)) {
-    fs.ensureFileSync(file);
-    fs.writeFileSync(file, code);
-  } else {
-    console.error(`File ${file} is already exists!`);
+// TODO: Use filePath instead
+// TODO: Add some content templates
+const createFile = async (fileName, content = '') => {
+  try {
+    await fs.access(fileName);
+    console.error('🚫 File already exists!');
+  } catch (err) {
+    try {
+      await fs.writeFile(fileName, content);
+
+      console.log('✅ File created successfully!');
+      console.log('Name: ', fileName);
+    } catch (writeErr) {
+      console.error(`❌ Error writing file: ${writeErr.message}`);
+    }
   }
 };
 
