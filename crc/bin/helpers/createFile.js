@@ -1,7 +1,5 @@
 import fs from 'fs/promises';
 
-// TODO: Use filePath instead
-// TODO: Add some content templates
 const createFile = async (fileName, content = '') => {
   try {
     await fs.access(fileName);
