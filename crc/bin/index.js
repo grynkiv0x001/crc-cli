@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 import arg from 'arg';
-import chalk from 'chalk';
+import colors from '@colors/colors';
 
 import args, { ARGS_NAMES } from './args.js';
 import createFile from './helpers/createFile.js';
+import usageTable from './usageTable.js';
 
 try {
   const toolArgs = arg({
@@ -21,10 +22,9 @@ try {
     createFile(`${componentName}.${componentExtension}`);
   }
 
-  console.log(chalk.black.bgGreen(' Starting... '));
+  console.log(colors.black.bgGreen(' Starting... '));
 } catch (e) {
   console.error('❌', e?.message);
 
-  console.log('\nUsage: ');
-  console.table(args);
+  usageTable();
 }
