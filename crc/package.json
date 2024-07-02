@@ -12,6 +12,7 @@
   "devDependencies": {
     "@colors/colors": "^1.6.0",
     "arg": "^5.0.2",
-    "cli-table3": "^0.6.5"
+    "cli-table3": "^0.6.5",
+    "prompts": "^2.4.2"
   }
 }

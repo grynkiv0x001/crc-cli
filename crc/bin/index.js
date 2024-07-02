@@ -8,6 +8,7 @@ import createFile from './helpers/createFile.js';
 import usageTable from './usageTable.js';
 import { jsBase, scssBase } from '../templates/base.js';
 import toKebabCase from './helpers/toKebabCase.js';
+import runComponentCreator from './componentCreator.js';
 
 const main = async () => {
   try {
@@ -20,10 +21,15 @@ const main = async () => {
     const isInteractive = toolArgs[ARGS_NAMES.INTERACTIVE];
     const componentPath = toolArgs[ARGS_NAMES.NAME];
 
+    if (isInteractive) {
+      runComponentCreator();
+      return;
+    }
+
     const componentName =
       toolArgs[ARGS_NAMES.NAME]?.split('/')?.pop() || toolArgs[ARGS_NAMES.NAME];
 
-    if (!componentName && !isInteractive) {
+    if (!componentName) {
       throw new Error(`Missing required argument: [${ARGS_NAMES.NAME}]`);
     }
 
